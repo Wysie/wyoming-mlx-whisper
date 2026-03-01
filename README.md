@@ -13,7 +13,7 @@ brew install ffmpeg
 
 ## Running Wyoming MLX Whisper as service
 ### Install the service
-The Wyoming MLX Whisper server will start at tcp://localhost:7891 by default.
+The installer will prompt you for a port number (default: `7891`). The Wyoming MLX Whisper server will then start at `tcp://localhost:<your-port>`.
 ```sh
 cd ~
 git clone https://github.com/vincent861223/wyoming-mlx-whisper.git
