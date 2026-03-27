@@ -8,6 +8,11 @@
   <array>
     <string><PWD-VARIABLE>/wyoming-mlx-whisper.sh</string>
   </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>WHISPER_PORT</key>
+    <string><PORT-VARIABLE></string>
+  </dict>
   <key>RunAtLoad</key>
   <true/>
   <key>KeepAlive</key>
