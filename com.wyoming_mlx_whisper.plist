@@ -12,6 +12,8 @@
   <dict>
     <key>WHISPER_PORT</key>
     <string><PORT-VARIABLE></string>
+    <key>WHISPER_MODEL</key>
+    <string><MODEL-VARIABLE></string>
   </dict>
   <key>RunAtLoad</key>
   <true/>

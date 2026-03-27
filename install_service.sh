@@ -10,7 +10,11 @@ if ! [[ "$PORT" =~ ^[0-9]+$ ]] || [ "$PORT" -lt 1 ] || [ "$PORT" -gt 65535 ]; th
     exit 1
 fi
 
-echo "Installing service on port $PORT..."
+# Prompt for model, defaulting to the recommended mlx-community model
+read -p "Enter model (HuggingFace repo ID or local path) [default: mlx-community/whisper-large-v3-turbo]: " MODEL
+MODEL=${MODEL:-mlx-community/whisper-large-v3-turbo}
+
+echo "Installing service on port $PORT with model '$MODEL'..."
 
 # Create log directory
 mkdir -p "$PWD/log"
@@ -20,6 +24,7 @@ cp com.wyoming_mlx_whisper.plist ~/Library/LaunchAgents/
 sed -i '' \
     -e 's|<PWD-VARIABLE>|'"$PWD"'|g' \
     -e 's|<PORT-VARIABLE>|'"$PORT"'|g' \
+    -e 's|<MODEL-VARIABLE>|'"$MODEL"'|g' \
     ~/Library/LaunchAgents/com.wyoming_mlx_whisper.plist
 # Make the run script executable
 chmod +x "$PWD/wyoming-mlx-whisper.sh"
@@ -27,4 +32,4 @@ chmod +x "$PWD/wyoming-mlx-whisper.sh"
 launchctl bootout gui/$(id -u)/com.wyoming_mlx_whisper.plist 2>/dev/null
 # Load the service
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.wyoming_mlx_whisper.plist
-echo "Service installed and started on tcp://localhost:$PORT"
+echo "Service installed and started on tcp://localhost:$PORT using model '$MODEL'"

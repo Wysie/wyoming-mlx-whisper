@@ -3,7 +3,7 @@
 [Wyoming protocol](https://github.com/rhasspy/wyoming) server
 for the [mlx-whisper](https://pypi.org/project/mlx-whisper) speech to text system.
 
-This runs `mlx-community/whisper-large-v3-turbo` by default, which gives a pretty good result and runs nearly real-time on a M1 Pro MacBook Pro.
+This runs `mlx-community/whisper-large-v3-turbo` by default, which gives a pretty good result and runs nearly real-time on a M1 Pro MacBook Pro. You can specify any [mlx-community](https://huggingface.co/mlx-community) model or a local path to a converted MLX model at install time.
 
 
 ## Install dependencies
@@ -13,7 +13,7 @@ brew install ffmpeg
 
 ## Running Wyoming MLX Whisper as service
 ### Install the service
-The installer will prompt you for a port number (default: `7891`). The Wyoming MLX Whisper server will then start at `tcp://localhost:<your-port>`.
+The installer will prompt you for a port number (default: `7891`) and a model (default: `mlx-community/whisper-large-v3-turbo`). You can enter any HuggingFace model ID (e.g. `mlx-community/whisper-large-v3`) or a local path to a converted MLX model (e.g. `/Users/you/whisper-small-singlish-mlx`). The Wyoming MLX Whisper server will then start at `tcp://localhost:<your-port>`.
 ```sh
 cd ~
 git clone https://github.com/vincent861223/wyoming-mlx-whisper.git
